@@ -17,3 +17,9 @@ ynh_script_progression --message="Configuring nginx web server..." --weight=1
 
 # Create a dedicated nginx config
 ynh_add_nginx_config
+
+#=================================================
+# ADD SERVICE MOSQUITTO TO ADMIN PANEL
+#=================================================
+
+yunohost service add mosquitto --log "/var/log/mosquitto/mosquitto.log"
