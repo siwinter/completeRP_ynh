@@ -45,4 +45,4 @@ ram.runtime = "1M"
     main.url = "/"
     
     [resources.apt]
-    # packages = "mosquitto, wireguard, mc"
+    packages = "mosquitto, wireguard, mc"
