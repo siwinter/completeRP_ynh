@@ -7,6 +7,18 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
+### `ynh_setup_source` is used to install an app from a zip or tar.gz file,
+### downloaded from an upstream source, like a git repository.
+### `ynh_setup_source` use the file conf/app.src
+
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir"
+
+# $install_dir will automatically be initialized with some decent 
+# permission by default ... however, you may need to recursively reapply
+# ownership to all files such as after the ynh_setup_source step
+chown -R $app:www-data "$install_dir"
+
 echo "Hello world!" > $install_dir/index.html
 chown -R www-data: "$install_dir"
 
