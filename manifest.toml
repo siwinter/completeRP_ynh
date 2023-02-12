@@ -7,7 +7,7 @@ description.fr = "Une app simple et bidon pour illustrer comme le packaging d'ap
 
 version = "0.1~ynh1"
 
-maintainers = ["alexAubin"]
+maintainers = ["siwinter"]
 
 [upstream]
 license = "WTFPL"
@@ -45,4 +45,4 @@ ram.runtime = "1M"
     main.url = "/"
     
     [resources.apt]
-    packages = "mosquitto, wireguard, mc"
+    packages = "mosquitto, wireguard, mc, python3, python3-pip, python3-venv"
