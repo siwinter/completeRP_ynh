@@ -2,14 +2,14 @@
 
 source /usr/share/yunohost/helpers
 
-if [ $mpd_port -eq 1 ]; then
-	mpd_port=$(ynh_find_port --port=6600)
-	ynh_app_setting_set --app=$app --key=mpd_port --value=$mpd_port
-	ynh_exec_warn_less yunohost firewall allow --no-upnp TCP $mpd_port
-	mpd_state="true"
+if [ $$rainradar -eq 1 ]; then
+	ynh_script_progression --message="rainradar 1" --weight=1
+
 else
-	mpd_state="false"
+	ynh_script_progression --message="rainradar 2" --weight=1
 fi
+
+ynh_script_progression --message="rainradar 1  $petrol" --weight=1
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
