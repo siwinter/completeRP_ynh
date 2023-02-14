@@ -11,17 +11,42 @@ fi
 
 ynh_script_progression --message="rainradar 1  $petrol" --weight=1
 
+
+
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_setup_source --dest_dir="$install_dir/source"
 
-### `ynh_setup_source` is used to install an app from a zip or tar.gz file,
-### downloaded from an upstream source, like a git repository.
-### `ynh_setup_source` use the file conf/app.src
+#=================================================
+# PYTHON VIRTUALENV
+#=================================================
+ynh_script_progression --message="Create Python virtualenv..." --weight=5
 
-# Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir"
+# Always recreate everything fresh with current python version
+ynh_secure_remove "${install_dir}/venv"
+
+# Skip pip because of: https://github.com/YunoHost/issues/issues/1960
+python3 -m venv --without-pip "${install_dir}/venv"
+
+chown -R "$app:" "$install_dir"
+
+#=================================================
+# PIP INSTALLATION
+#=================================================
+ynh_script_progression --message="Install project via pip..." --weight=45
+
+#run source in a 'sub shell'
+(
+	set +o nounset
+	source "${install_dir}/venv/bin/activate"
+	set -o nounset
+	ynh_exec_as $app $install_dir/venv/bin/python3 -m ensurepip
+	ynh_exec_as $app $install_dir/venv/bin/pip3 install --upgrade wheel pip setuptools
+	ynh_exec_as $app $install_dir/venv/bin/pip3 install "${install_dir}/source"
+)
 
 echo "Hello world!" > $install_dir/index.html
 
