@@ -2,8 +2,9 @@
 
 source /usr/share/yunohost/helpers
 
-if [ $$rainradar -eq "1" ]; then
+if [ $rainradar -eq 1 ]; then
 	ynh_script_progression --message="rainradar 1" --weight=1
+	yunohost app install "" --force
 
 else
 	ynh_script_progression --message="rainradar 2" --weight=1
@@ -44,11 +45,11 @@ ynh_add_nginx_config
 # ADD SERVICE MOSQUITTO TO ADMIN PANEL
 #=================================================
 
-yunohost service add mosquitto --log "/var/log/mosquitto/mosquitto.log"
+#yunohost service add mosquitto --log "/var/log/mosquitto/mosquitto.log"
 
-cp ../conf/wg0.conf /etc/wireguard/wg0.conf
-systemctl enable wg-quick@wg0
+#cp ../conf/wg0.conf /etc/wireguard/wg0.conf
+#systemctl enable wg-quick@wg0
 
 # allow IP-Forwarding
-sed -i s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g /etc/sysctl.conf
-sysctl -p
+#sed -i s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g /etc/sysctl.conf
+#sysctl -p
