@@ -2,7 +2,7 @@
 
 source /usr/share/yunohost/helpers
 
-if [ $$rainradar -eq 1 ]; then
+if [ $$rainradar -eq "1" ]; then
 	ynh_script_progression --message="rainradar 1" --weight=1
 
 else
