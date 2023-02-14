@@ -3,8 +3,8 @@
 source /usr/share/yunohost/helpers
 
 if [ $rainradar -eq 1 ]; then
-	ynh_script_progression --message="rainradar 1" --weight=1
-	yunohost app install "" --force
+	ynh_script_progression --message="install rainradar" --weight=1
+	yunohost app install "https://github.com/siwinter/rainradar2_ynh" --force
 
 else
 	ynh_script_progression --message="rainradar 2" --weight=1
