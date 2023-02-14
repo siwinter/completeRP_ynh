@@ -3,11 +3,10 @@
 source /usr/share/yunohost/helpers
 
 if [ $rainradar -eq 1 ]; then
-	ynh_script_progression --message="install rainradar" --weight=1
-	yunohost app install "https://github.com/siwinter/rainradar2_ynh" --force
+	ynh_script_progression --message="activate rainradar" --weight=1
 
 else
-	ynh_script_progression --message="rainradar 2" --weight=1
+	ynh_script_progression --message="do not activate rainradar" --weight=1
 fi
 
 ynh_script_progression --message="rainradar 1  $petrol" --weight=1
