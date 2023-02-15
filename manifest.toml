@@ -69,5 +69,4 @@ ram.runtime = "1M"
     # This will pick a random port for reverse-proxying and store it as the $port setting 
     
     [resources.apt]
-    packages = "python3, python3-pip, python3-venv"
-#    packages = "mc"
+    packages = "mc, mosquitto, wireguard, python3, python3-pip, python3-venv"
