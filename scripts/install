@@ -2,11 +2,41 @@
 
 source /usr/share/yunohost/helpers
 
+ [install.rainradar]
+    ask.en = "select apps to install"
+    help.en = "rainradar"
+    type = "boolean"
+    default = "true"
+    
+    [install.serialMqtt]
+    help.en = "serialMqtt"
+    type = "boolean"
+    default = "false"
+    
+    [install.vpnCtrl]
+    help.en = "vpnCtrl"
+    type = "boolean"
+    default = "false"
+
 if [ $rainradar -eq 1 ]; then
 	ynh_script_progression --message="activate rainradar" --weight=1
 
 else
 	ynh_script_progression --message="do not activate rainradar" --weight=1
+fi
+
+if [ $vpnCtrl -eq 1 ]; then
+	ynh_script_progression --message="activate vpnController" --weight=1
+
+else
+	ynh_script_progression --message="do not activate vpnController" --weight=1
+fi
+
+if [ $serialMqtt -eq 1 ]; then
+	ynh_script_progression --message="activate serialMqttBridge" --weight=1
+
+else
+	ynh_script_progression --message="do not activate serialMqttBridge" --weight=1
 fi
 
 ynh_script_progression --message="rainradar 1  $petrol" --weight=1
