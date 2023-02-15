@@ -57,7 +57,7 @@ ynh_add_nginx_config
 # ADD SERVICE MOSQUITTO TO ADMIN PANEL
 #=================================================
 
-#yunohost service add mosquitto --log "/var/log/mosquitto/mosquitto.log"
+yunohost service add mosquitto --description="a lightweight MQTT broker" --log "/var/log/mosquitto/mosquitto.log"
 
 #cp ../conf/wg0.conf /etc/wireguard/wg0.conf
 #systemctl enable wg-quick@wg0
