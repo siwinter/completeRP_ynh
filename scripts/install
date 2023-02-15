@@ -43,7 +43,7 @@ echo "Hello world!" > $install_dir/index.html
 # ownership to all files such as after the ynh_setup_source step
 chown -R $app:www-data "$install_dir"
 
-chown -R www-data: "$install_dir"
+chown -R "$app:$app" "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
