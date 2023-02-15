@@ -16,8 +16,33 @@ ynh_remove_nginx_config
 # Remove a service from the admin panel, added by `yunohost service add`
 if ynh_exec_warn_less yunohost service status mosquitto >/dev/null
 then
-	ynh_script_progression --message="Removing $app service..." --time --weight=1
+	ynh_script_progression --message="Removing mosquitto service..." --time --weight=1
 	yunohost service remove mosquitto
+fi
+
+#=================================================
+# REMOVE SELECTED SERVICES TO SYSTEM
+#=================================================
+ynh_script_progression --message="add selected apps" --weight=1
+
+
+if [ $rainradar -eq 1 ]; then
+
+	ynh_script_progression --message="Removing rainradar service..." --time --weight=1
+	yunohost service remove rainradar
+fi
+
+if [ $vpnCtrl -eq 1 ]; then
+
+	ynh_script_progression --message="Removing vpnController service..." --time --weight=1
+	yunohost service remove vpnController
+fi
+
+if [ $serialMqtt -eq 1 ]; then
+
+	ynh_script_progression --message="Removing serialMqtt service..." --time --weight=1
+	yunohost service remove serialMqtt
+
 fi
 
 
