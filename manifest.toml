@@ -47,10 +47,15 @@ ram.runtime = "1M"
     type = "boolean"
     default = "false"
     
+    [install.mqtt_server]
+    ask.en = "MQTT-Server Address"
+    type = "string"
+    default = "localhost"
 
-    [install.init_main_permission]
-    type = "group"
-    default = "visitors"
+    [install.mqtt_port]
+    ask.en = "MQTT-Server Port"
+    type = "number"
+    default = "1883"
 
 [resources]
     [resources.system_user]
@@ -59,6 +64,9 @@ ram.runtime = "1M"
     
     [resources.permissions]
     main.url = "/"
+
+    [resources.ports]
+    # This will pick a random port for reverse-proxying and store it as the $port setting 
     
     [resources.apt]
     packages = "python3, python3-pip, python3-venv"
