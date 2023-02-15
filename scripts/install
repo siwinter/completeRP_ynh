@@ -74,7 +74,7 @@ ynh_script_progression --message="add selected apps" --weight=1
 
 if [ $rainradar -eq 1 ]; then
 	ynh_script_progression --message="activate rainradar" --weight=1
-	ynh_add_systemd_config --service=rainradar --template=./config/rainradard.conf
+	ynh_add_systemd_config --service=rainradar --template=rainradard.conf
 	
 	ynh_add_config --template="rainradar.conf" --destination="$install_dir/rainradar.conf"
 	chmod 400 "$install_dir/rainradar.conf"
@@ -85,7 +85,7 @@ fi
 
 if [ $vpnCtrl -eq 1 ]; then
 	ynh_script_progression --message="activate vpnController" --weight=1
-	ynh_add_systemd_config --service=vpnController --template=./config/vpnControllerd.conf
+	ynh_add_systemd_config --service=vpnController --template=vpnControllerd.conf
 	
 	yunohost service add vpnController --description="controller of VPN enpoints"
 fi
