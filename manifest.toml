@@ -35,10 +35,15 @@ ram.runtime = "1M"
     ask.en = "select apps to install"
     help.en = "rainradar"
     type = "boolean"
-    default = "true"
+    default = "false"
     
-    [install.petrol]
-    help.en = "petrol"
+    [install.serialMqtt]
+    help.en = "serialMqtt"
+    type = "boolean"
+    default = "false"
+    
+    [install.vpnCtrl]
+    help.en = "vpnCtrl"
     type = "boolean"
     default = "false"
     
