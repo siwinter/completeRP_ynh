@@ -2,43 +2,6 @@
 
 source /usr/share/yunohost/helpers
 
-if [ $rainradar -eq 1 ]; then
-	ynh_script_progression --message="activate rainradar" --weight=1
-	ynh_add_systemd_config --service=rainradar --template=./config/rainradard.conf
-	
-	ynh_add_config --template="rainradar.conf" --destination="$install_dir/rainradar.conf"
-	chmod 400 "$install_dir/rainradar.conf"
-	chown $app:$app "$install_dir/rainradar.conf"
-	
-	yunohost service add $rainradar --description="virtual rainsensor"
-
-else
-	ynh_script_progression --message="do not activate rainradar" --weight=1
-fi
-
-if [ $vpnCtrl -eq 1 ]; then
-	ynh_script_progression --message="activate vpnController" --weight=1
-	ynh_add_systemd_config --service=vpnController --template=./config/vpnControllerd.conf
-	
-	yunohost service add vpnController --description="virtual rainsensor"
-
-else
-	ynh_script_progression --message="do not activate vpnController" --weight=1
-fi
-
-if [ $serialMqtt -eq 1 ]; then
-	ynh_script_progression --message="activate serialMqttBridge" --weight=1
-	ynh_add_systemd_config --service=serialMqtt --template=serialMqttd.conf
-
-else
-	ynh_script_progression --message="do not activate serialMqttBridge" --weight=1
-fi
-
-ynh_script_progression --message="rainradar 1  $petrol" --weight=1
-
-
-
-
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
@@ -102,3 +65,34 @@ ynh_add_nginx_config
 # allow IP-Forwarding
 #sed -i s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g /etc/sysctl.conf
 #sysctl -p
+
+#=================================================
+# ADD SELECTED SERVICES TO SYSTEM
+#=================================================
+ynh_script_progression --message="add selected apps" --weight=1
+
+
+if [ $rainradar -eq 1 ]; then
+	ynh_script_progression --message="activate rainradar" --weight=1
+	ynh_add_systemd_config --service=rainradar --template=./config/rainradard.conf
+	
+	ynh_add_config --template="rainradar.conf" --destination="$install_dir/rainradar.conf"
+	chmod 400 "$install_dir/rainradar.conf"
+	chown $app:$app "$install_dir/rainradar.conf"
+	
+	yunohost service add rainradar --description="virtual rainsensor"
+fi
+
+if [ $vpnCtrl -eq 1 ]; then
+	ynh_script_progression --message="activate vpnController" --weight=1
+	ynh_add_systemd_config --service=vpnController --template=./config/vpnControllerd.conf
+	
+	yunohost service add vpnController --description="controller of VPN enpoints"
+fi
+
+if [ $serialMqtt -eq 1 ]; then
+	ynh_script_progression --message="activate serialMqttBridge" --weight=1
+	ynh_add_systemd_config --service=serialMqtt --template=serialMqttd.conf
+	
+	yunohost service add serialMqtt --description="bridge MQTT to serial"
+fi
