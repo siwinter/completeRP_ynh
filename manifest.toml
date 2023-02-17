@@ -30,6 +30,26 @@ ram.runtime = "1M"
     # this is a generic question - ask strings are automatically handled by Yunohost's core
     type = "path"
     default = "/helloworld"
+
+    [install.client_ip]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "string"
+    default = "192.168.19.19"
+
+    [install.client_privkey]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "string"
+    default = "xyz"
+
+    [install.aerver_adr]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "string"
+    default = "192.168.19.19:8081"
+
+    [install.server_pubkey]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "string"
+    default = "xyz"
     
     [install.rainradar]
     ask.en = "select apps to install"
