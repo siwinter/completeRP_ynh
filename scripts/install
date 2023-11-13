@@ -57,8 +57,8 @@ ynh_add_nginx_config
 #=================================================
 # Init wireguard
 #=================================================
-
-if [ $wireguard -eq 1 ]; then
+if [ $rainradar -eq 1 ]; then
+#if [ $wireguard -eq 1 ]; then
 	ynh_script_progression --message="install wireguard" --weight=1
 	ynh_add_config --template="../conf/wg0.conf" --destination="/etc/wireguard/wg0.conf"
 
