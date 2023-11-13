@@ -58,7 +58,7 @@ ram.runtime = "1M"
     default = "false"
 
     
-    [install.wirequard]
+    [install.wireguard]
     ask.en = "install wireguard"
     help.en = "rainradar"
     type = "boolean"
