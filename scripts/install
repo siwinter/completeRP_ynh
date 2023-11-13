@@ -72,11 +72,9 @@ fi
 #=================================================
 # ADD SERVICE MOSQUITTO TO ADMIN PANEL
 #=================================================
-
-
-
 if [ $mosquitto -eq 1 ]; then
 	ynh_script_progression --message="install mosquitto" --weight=1
+	ynh_add_config --template="../conf/mosquitto_ynh.conf" --destination="/etc/mosquitto/conf.d/ynh.conf"
 	yunohost service add mosquitto --description="a lightweight MQTT broker"
 fi
 
