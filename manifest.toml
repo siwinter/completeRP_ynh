@@ -50,17 +50,24 @@ ram.runtime = "1M"
     # this is a generic question - ask strings are automatically handled by Yunohost's core
     type = "string"
     default = "xyz"
-    
+
     [install.mosquitto]
     ask.en = "install mosquitto?"
-    help.en = "rainradar"
     type = "boolean"
     default = "false"
 
+    [install.mqtt_server]
+    ask.en = "MQTT-Server Address"
+    type = "string"
+    default = "localhost"
+
+    [install.mqtt_port]
+    ask.en = "MQTT-Server Port"
+    type = "number"
+    default = "1883"
     
     [install.wireguard]
     ask.en = "install wireguard"
-    help.en = "rainradar"
     type = "boolean"
     default = "false"
 
@@ -80,16 +87,6 @@ ram.runtime = "1M"
     help.en = "vpnCtrl"
     type = "boolean"
     default = "false"
-    
-    [install.mqtt_server]
-    ask.en = "MQTT-Server Address"
-    type = "string"
-    default = "localhost"
-
-    [install.mqtt_port]
-    ask.en = "MQTT-Server Port"
-    type = "number"
-    default = "1883"
 
 [resources]
 #    [resources.system_user]
