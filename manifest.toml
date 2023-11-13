@@ -51,6 +51,20 @@ ram.runtime = "1M"
     type = "string"
     default = "xyz"
     
+    [install.mosquitto]
+    ask.en = "install mosquitto?"
+    help.en = "rainradar"
+    type = "boolean"
+    default = "false"
+
+    
+    [install.wirequard]
+    ask.en = "install wireguard"
+    help.en = "rainradar"
+    type = "boolean"
+    default = "false"
+
+    
     [install.rainradar]
     ask.en = "select apps to install"
     help.en = "rainradar"
