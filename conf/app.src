@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/siwinter/py_apps/archive/refs/tags/v1.0.2.tar.gz
-SOURCE_SUM=3dd0f34caa1fd0706c3e0362dc124f1663134f83be8eef7b5190f4d0a805d26b
+SOURCE_URL=https://github.com/siwinter/py_apps/archive/refs/tags/v1.0.3.tar.gz
+SOURCE_SUM=e087c9bf78c1010cb78f836c83c9bfe996bcc84f5c4cb07a36569ed2568eef84
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
