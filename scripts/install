@@ -89,7 +89,7 @@ if [ $rainradar -eq 1 ]; then
 	ynh_script_progression --message="activate rainradar" --weight=1
 	ynh_add_systemd_config --service=rainradar --template=rainradard.conf
 	
-	ynh_add_config --template="rainradar.conf" --destination="$install_dir/rainradar.conf"
+	ynh_add_config --template="rainRadar.ini" --destination="$install_dir/rainRadar.ini"
 	chmod 400 "$install_dir/rainradar.conf"
 	chown $app:$app "$install_dir/rainradar.conf"
 	
