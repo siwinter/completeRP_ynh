@@ -104,4 +104,4 @@ ram.runtime = "1M"
     
     [resources.apt]
 #    packages = "mc, mosquitto, wireguard, python3, python3-pip, python3-venv"
-     packages = "python3, python3-pip, python3-venv"
+     packages = "mosquitto, python3, python3-pip, python3-venv"
