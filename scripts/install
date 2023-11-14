@@ -85,12 +85,12 @@ ynh_script_progression --message="add selected apps" --weight=1
 if [ $rainradar -eq 1 ]; then
 	ynh_script_progression --message="activate rainradar" --weight=1
 	ynh_add_systemd_config --service=rainradar --template=rainRadard.conf
-	
+	yunohost service add rainradar --description="virtual rainradar" --log="/var/log/myApps/rainRadar.log"
+	ynh_use_logrotate --logfile="/var/log/myApps/rainRadar.log"
+
 	ynh_add_config --template="rainRadar.ini" --destination="$install_dir/rainRadar.ini"
 	chmod 400 "$install_dir/rainRadar.ini"
 	chown $app:$app "$install_dir/rainRadar.ini"
-	
-	yunohost service add rainradar --description="virtual rainsensor"
 fi
 
 if [ $vpnCtrl -eq 1 ]; then
