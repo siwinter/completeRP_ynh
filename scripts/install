@@ -66,6 +66,12 @@ if [ $wireguard -eq 1 ]; then
 	# allow IP-Forwarding
 	sed -i s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g /etc/sysctl.conf
 	sysctl -p
+
+	# set host IPs
+	echo "192.168.206.1   winterwelt.feste.ip.net" >> /etc/hosts
+	echo "192.168.206.2   islc.mooo.com" >> /etc/hosts
+	echo "192.168.206.3   gths.mooo.com" >> /etc/hosts
+	echo "192.168.206.4   dsbg.mooo.com" >> /etc/hosts
 fi
 
 #=================================================
