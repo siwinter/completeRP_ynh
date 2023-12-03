@@ -2,7 +2,7 @@ packaging_format = 2
 
 id = "complete_rp"
 name = "complete raspi"
-description.en = "To complete installation of a rapberry server"
+description.en = "To complete installation of a raspberry server"
 
 version = "0.1~ynh1"
 
