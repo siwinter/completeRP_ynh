@@ -10,6 +10,13 @@ echo "$install_dir/source"
 ynh_setup_source --dest_dir="$install_dir/source"
 
 #=================================================
+# SET STATIC IP-ADDRESS
+#=================================================
+# raspberry OS nutzt in Version bookworm nmcli es ist zu testen, ob yunohost das übernimmt?? 
+ipAdr="192.168.10.10"
+gateway="192.168.10.1"
+nmcli connection add type ethernet con-name conn1 ifname eth0 ip4 $ipAdr/24 gw4 $gateway
+#=================================================
 # PYTHON VIRTUALENV
 #=================================================
 ynh_script_progression --message="Create Python virtualenv..." --weight=5
